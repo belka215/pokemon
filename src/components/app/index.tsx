@@ -1,4 +1,4 @@
-import { MainPage } from "../../pages/main-page"
+// import { MainPage } from "../../pages/main-page"
 import { PokemonPage } from "../../pages/pokemon-page"
 import { Header } from "../header"
 import "./index.scss"
