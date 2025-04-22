@@ -1,0 +1,14 @@
+.pagination {
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+
+  &__arrow {
+    width: 30px;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.card {
+  padding: 15px;
+  border: 1px solid black;
+  width: calc(100% / 5 - 60px);
+  cursor: pointer;
+
+  &__top {
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 30px;
+  }
+
+  &__icon {
+    width: 25px;
+    height: 25px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+}
