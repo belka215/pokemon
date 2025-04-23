@@ -33,6 +33,8 @@ h1,
 h2,
 h3,
 h4,
+ul,
+li,
 label,
 input,
 button {
@@ -48,4 +50,16 @@ button {
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.text {
+  font-size: 20px;
+
+  &_uppercase {
+    text-transform: uppercase;
+  }
+
+  &_bold {
+    font-weight: 700;
+  }
 }
