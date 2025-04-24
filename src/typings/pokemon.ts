@@ -15,8 +15,8 @@ export type DetailedPokemonType = {
   height: number;
   isFavorite: boolean;
   isInComparison: boolean;
-  img: string;
-  stats: Stat[];
+  img?: string;
+  stats?: Stat[];
 }
 
 export interface IDetailedPokemonComponent {
