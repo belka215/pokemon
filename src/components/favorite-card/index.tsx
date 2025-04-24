@@ -20,7 +20,7 @@ export const FavoriteCard: FC<IDetailedPokemonComponent> = ({ pokemon }) => {
           <div className="favorite-card__column__bottom__column">
             <p className="text">Stats:</p>
             <ul>
-              {pokemon.stats.map((item, index) => {
+              {pokemon.stats?.map((item, index) => {
                 return <li className="text" key={index}>{item.name} - {item.value}</li>
               })}
             </ul>
