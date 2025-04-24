@@ -1,5 +1,7 @@
 // import { MainPage } from "../../pages/main-page"
-import { PokemonPage } from "../../pages/pokemon-page"
+// import { PokemonPage } from "../../pages/pokemon-page"
+// import { ComparisonPage } from "../../pages/comparison-page"
+import { FavoritesPage } from "../../pages/favorites-page"
 import { Header } from "../header"
 import "./index.scss"
 
@@ -9,7 +11,9 @@ const App = () => {
       <Header />
       <main className="main">
         {/* <MainPage /> */}
-        <PokemonPage />
+        {/* <PokemonPage /> */}
+        {/* <ComparisonPage /> */}
+        <FavoritesPage />
       </main>
     </>
   )
