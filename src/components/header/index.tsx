@@ -1,15 +1,16 @@
+import { Link } from "react-router-dom"
 import "./index.scss"
 
 export const Header = () => {
   return (
     <div className="header">
       <div className="wrapper">
-        <div className="header__left">
+        <Link to="/" className="header__left">
           <h1 className="h1">Pokemons</h1>
-        </div>
+        </Link>
         <div className="header__right">
-          <button className="header__right__item">Favorites</button>
-          <button className="header__right__item">Comparison</button>
+          <Link to="/favorites" className="header__right__item">Favorites</Link>
+          <Link to="/comparison" className="header__right__item">Comparison</Link>
         </div>
       </div>
     </div>
