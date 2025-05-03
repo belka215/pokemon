@@ -1,0 +1,51 @@
+.favorite-card {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  margin: 15px;
+  padding: 15px;
+
+  &__column {
+    display: flex;
+
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+    &__up {
+      text-align: center;
+    }
+
+    &__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      &__column {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    &:nth-child(2) {
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      width: 60%;
+    }
+
+    &:last-child {
+      align-items: end;
+    }
+  }
+
+  &__btn {
+    height: 50px;
+    width: 110px;
+    border: 1px solid black;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+}

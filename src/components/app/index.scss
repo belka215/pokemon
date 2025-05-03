@@ -52,8 +52,19 @@ button {
   margin: 0 auto;
 }
 
+.page {
+  margin: 50px 0;
+
+  &__title {
+    text-align: center;
+    font-size: 32px;
+    text-transform: uppercase;
+  }
+}
+
 .text {
   font-size: 20px;
+  font-weight: 500;
 
   &_uppercase {
     text-transform: uppercase;
@@ -62,4 +73,11 @@ button {
   &_bold {
     font-weight: 700;
   }
+}
+
+.card-title {
+  font-size: 25px;
+  font-weight: 500;
+  text-transform: uppercase;
+  
 }
