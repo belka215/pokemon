@@ -47,6 +47,10 @@ button {
   border: none;
 }
 
+button[disabled] {
+  cursor: default;
+}
+
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -84,5 +88,5 @@ button {
   font-size: 25px;
   font-weight: 500;
   text-transform: uppercase;
-  
+
 }
