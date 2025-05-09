@@ -5,13 +5,14 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemonsThunk } from "../../store/pokemons/slice.ts";
 import { AppDispatch } from "../../store/index.ts";
-import { getPokemons } from "../../store/pokemons/selectors.ts";
+import { getError, getPokemons } from "../../store/pokemons/selectors.ts";
 import { Spinner } from "../spinner/index.tsx";
 import { Pagination } from "../pagination/index.tsx";
 
 export const PokemonList = () => {
   const dispatch: AppDispatch = useDispatch();
   const pokemons = useSelector(getPokemons);
+  const error = useSelector(getError);
 
   useEffect(() => {
     dispatch(getPokemonsThunk('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'))
@@ -19,6 +20,10 @@ export const PokemonList = () => {
 
   if (!pokemons) {
     return <Spinner />
+  }
+
+  if (error) {
+    return <p>Smth went wrong</p>
   }
 
   return (
