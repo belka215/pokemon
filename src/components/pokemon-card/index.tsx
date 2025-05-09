@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 import { IPokemonComponent } from "../../typings/pokemon"
 import like from "./img/like.png"
 import compare from "./img/compare.png"
@@ -10,7 +11,7 @@ export const PokemonCard: FC<IPokemonComponent> = ({ pokemon }) => {
   }
 
   return (
-    <div className="card" onClick={handleClick}>
+    <Link to={`/pokemons/${pokemon.number}`} className="card" onClick={handleClick}>
       <div className="card__top">
         <h4 className="card__name">{pokemon.name}</h4>
       </div>
@@ -22,6 +23,6 @@ export const PokemonCard: FC<IPokemonComponent> = ({ pokemon }) => {
           <img src={compare} alt="" className="compare" />
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
