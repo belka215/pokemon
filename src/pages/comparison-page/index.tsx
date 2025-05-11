@@ -1,22 +1,5 @@
-import { CompareCard } from "../../components/compare-card";
+// import { CompareCard } from "../../components/compare-card";
 import "./index.scss"
-
-const mockData = [
-  {
-    name: "Bulbasaur",
-    weight: 3,
-    height: 10,
-    isFavorite: false,
-    isInComparison: false,
-  },
-  {
-    name: "Ivysaur",
-    weight: 3,
-    height: 10,
-    isFavorite: false,
-    isInComparison: false,
-  }
-];
 
 export const ComparisonPage = () => {
   return (
@@ -37,9 +20,9 @@ export const ComparisonPage = () => {
             <div className="comparison__column__item">
             </div>
           </div>
-          {mockData.map((item, index) => {
-            return <CompareCard pokemon={item} key={index} />
-          })}
+          {/* {mockData.map((item, index) => {
+            return <CompareCard />
+          })} */}
         </div>
       </div>
     </div>

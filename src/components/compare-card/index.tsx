@@ -1,18 +1,17 @@
 import { FC } from "react"
-import { IDetailedPokemonComponent } from "../../typings/pokemon"
 import "./index.scss"
 
-export const CompareCard: FC<IDetailedPokemonComponent> = ({ pokemon }) => {
+export const CompareCard: FC = () => {
   return (
     <div className="comparison__column">
       <div className="comparison__column__item">
-        <h4 className="text text_uppercase">{pokemon.name}</h4>
+        <h4 className="text text_uppercase"></h4>
       </div>
       <div className="comparison__column__item">
-        <p className="text text_uppercase">{pokemon.weight}</p>
+        <p className="text text_uppercase"></p>
       </div>
       <div className="comparison__column__item">
-        <p className="text text_uppercase">{pokemon.height}</p>
+        <p className="text text_uppercase"></p>
       </div>
       <div className="comparison__column__item">
         <button className="comparison__column__btn text text_uppercase">Remove</button>
