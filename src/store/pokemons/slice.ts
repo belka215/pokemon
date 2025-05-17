@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { PokemonsState } from "./types";
-import { fetchPokemons } from "../../api/pokemons";
+import { fetchDetailedPokemon, fetchPokemons } from "../../api/pokemons";
 
 const initialState: PokemonsState = {
   pokemons: {
@@ -10,6 +10,17 @@ const initialState: PokemonsState = {
   pagination: {
     next: null,
     previous: null,
+  },
+  detailedPokemon: {
+    url: '',
+    content: {
+      weight: 0,
+      height: 0,
+      name: '',
+      stats: []
+    },
+    isLoading: false,
+    error: '',
   },
   isLoading: false,
   error: '',
@@ -32,6 +43,23 @@ export const getPokemonsThunk = createAsyncThunk<void, string, { rejectValue: st
   }
 )
 
+export const getDetailedPokemonThunk = createAsyncThunk<void, string, { rejectValue: string }>(
+  'getDetailedPokemonThunk',
+  async (URL, { dispatch, rejectWithValue }) => {
+    try {
+      dispatch(setDetailedPokemonLoading(true));
+
+      const detailedPokemonData = await fetchDetailedPokemon(URL);
+
+      dispatch(setDetailedPokemon(detailedPokemonData));
+    } catch (e) {
+      return rejectWithValue((e as Error).message);
+    } finally {
+      dispatch(setDetailedPokemonLoading(false))
+    }
+  }
+)
+
 const pokemonsSlice = createSlice({
   name: 'pokemons',
   initialState,
@@ -50,6 +78,15 @@ const pokemonsSlice = createSlice({
     },
     setPrevPage(state, action) {
       state.pagination.previous = action.payload;
+    },
+    setPokemonURL(state, action) {
+      state.detailedPokemon.url = action.payload;
+    },
+    setDetailedPokemon(state, action) {
+      state.detailedPokemon.content = action.payload;
+    },
+    setDetailedPokemonLoading(state, action) {
+      state.detailedPokemon.isLoading = action.payload;
     }
   },
   extraReducers(builder) {
@@ -67,6 +104,6 @@ const pokemonsSlice = createSlice({
   },
 })
 
-export const { setLoading, setPokemons, setTotal, setNextPage, setPrevPage } = pokemonsSlice.actions;
+export const { setLoading, setPokemons, setTotal, setNextPage, setPrevPage, setDetailedPokemon, setDetailedPokemonLoading, setPokemonURL } = pokemonsSlice.actions;
 
 export default pokemonsSlice.reducer;

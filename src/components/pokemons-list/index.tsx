@@ -1,6 +1,5 @@
 import { PokemonCard } from "../pokemon-card"
 import { PokemonType } from "../../typings/pokemon.ts"
-import "./index.scss"
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemonsThunk } from "../../store/pokemons/slice.ts";
@@ -8,6 +7,7 @@ import { AppDispatch } from "../../store/index.ts";
 import { getError, getPokemons } from "../../store/pokemons/selectors.ts";
 import { Spinner } from "../spinner/index.tsx";
 import { Pagination } from "../pagination/index.tsx";
+import "./index.scss"
 
 export const PokemonList = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -15,7 +15,7 @@ export const PokemonList = () => {
   const error = useSelector(getError);
 
   useEffect(() => {
-    dispatch(getPokemonsThunk('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'))
+    dispatch(getPokemonsThunk('https://pokeapi.co/api/v2/pokemon?limit=20&offset=0'));
   }, [])
 
   if (!pokemons) {

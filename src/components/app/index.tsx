@@ -13,7 +13,7 @@ const App = () => {
       <main className="main">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="pokemons/:number" element={<PokemonPage />} />
+          <Route path="pokemons/:id" element={<PokemonPage />} />
           <Route path="comparison" element={<ComparisonPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
         </Routes>
