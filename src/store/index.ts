@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./users/reducer";
 import pokemonsReducer from "./pokemons/slice";
+import favoritesReducer from "./favorites/slice";
 
 const rootReducer = {
   data: pokemonsReducer,
-  user: userReducer
+  user: userReducer,
+  favorites: favoritesReducer,
 }
 
 export const store = configureStore({
