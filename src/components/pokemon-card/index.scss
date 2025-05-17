@@ -2,7 +2,6 @@
   padding: 15px;
   border: 1px solid black;
   width: calc(100% / 4 - 60px);
-  cursor: pointer;
 
   &__top {
     padding-top: 20px;
@@ -26,4 +25,16 @@
     }
   }
 
+  &__name {
+    cursor: pointer;
+  }
+}
+
+.like,
+.compare {
+  cursor: pointer;
+
+  &_active {
+    background-color: red;
+  }
 }
