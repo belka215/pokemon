@@ -11,7 +11,7 @@ export const PokemonCard: FC<IPokemonComponent> = ({ pokemon }) => {
   }
 
   return (
-    <Link to={`/pokemons/${pokemon.number}`} className="card" onClick={handleClick}>
+    <Link to={`/pokemons`} className="card" onClick={handleClick}>
       <div className="card__top">
         <h4 className="card__name">{pokemon.name}</h4>
       </div>

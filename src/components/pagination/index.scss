@@ -1,14 +1,33 @@
 .pagination {
   padding: 30px 0;
   display: flex;
+  align-items: center;
+  gap: 30px;
   justify-content: space-between;
 
   &__arrow {
-    width: 30px;
+    width: 2%;
     cursor: pointer;
 
     img {
       width: 100%;
     }
+  }
+
+  &__middle {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+  }
+}
+
+.page-num {
+  padding: 5px;
+  font-size: 16px;
+  cursor: pointer;
+
+  &_active {
+    background-color: red;
   }
 }
