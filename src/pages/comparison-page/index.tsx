@@ -1,7 +1,29 @@
-// import { CompareCard } from "../../components/compare-card";
+import { CompareCard } from "../../components/compare-card";
+import { useDispatch, useSelector } from "react-redux"
 import "./index.scss"
+import { getDetailedPokemon } from "../../store/pokemons/selectors"
+import { useEffect } from "react";
+import { AppDispatch } from "../../store";
+import { getDetailedComparisonThunk, updateComparison } from "../../store/comparison/slice";
+import { getToComparisonPokemons } from "../../store/comparison/selectors";
 
 export const ComparisonPage = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const pokemonsToCompare = useSelector(getToComparisonPokemons);
+  const detailedPokemon = useSelector(getDetailedPokemon);
+  const state = useSelector(state => state)
+  console.log(pokemonsToCompare, detailedPokemon, state)
+
+  useEffect(() => {
+    pokemonsToCompare.forEach(pokemon => {
+      if (detailedPokemon && detailedPokemon.name === pokemon.name) {
+        dispatch(updateComparison(detailedPokemon))
+      } else if ('url' in pokemon) {
+        dispatch(getDetailedComparisonThunk(pokemon.url))
+      }
+    })
+  }, [detailedPokemon])
+
   return (
     <div className="page">
       <div className="wrapper">
@@ -20,9 +42,11 @@ export const ComparisonPage = () => {
             <div className="comparison__column__item">
             </div>
           </div>
-          {/* {mockData.map((item, index) => {
-            return <CompareCard />
-          })} */}
+          {pokemonsToCompare.map((item, index) => {
+            if ('height' in item) {
+              return <CompareCard pokemon={item} key={index} />
+            }
+          })}
         </div>
       </div>
     </div>

@@ -19,13 +19,17 @@ export const Pagination = () => {
   const pages = Array.from({ length: Math.ceil(total / 20) }, (_, i) => i + 1);
 
   const handlePrevPage = (URL: string | null) => {
-    dispatch(getPokemonsThunk(URL!))
-    setPage((prevPage) => prevPage - 1);
+    if (URL) {
+      dispatch(getPokemonsThunk(URL))
+      setPage((prevPage) => prevPage - 1);
+    }
   }
 
   const handleNextPage = (URL: string | null) => {
-    dispatch(getPokemonsThunk(URL!))
-    setPage((prevPage) => prevPage + 1);
+    if (URL) {
+      dispatch(getPokemonsThunk(URL))
+      setPage((prevPage) => prevPage + 1);
+    }
   }
 
   return (
