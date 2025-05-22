@@ -9,7 +9,6 @@ import "./index.scss"
 import { removeFromFavorites, setToFavorites } from "../../store/favorites/slice";
 import { getFavorites } from "../../store/favorites/selectors";
 import { addToComparison } from "../../store/comparison/slice";
-import { getComparisonError } from "../../store/comparison/selectors";
 
 export const PokemonCard: FC<IPokemonComponent> = ({ pokemon }) => {
   const dispatch = useDispatch();
