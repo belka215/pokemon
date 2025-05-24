@@ -35,6 +35,7 @@
   cursor: pointer;
 
   &_active {
-    background-color: red;
+    background-color: #FF0000;
+    border-radius: 50%;
   }
 }

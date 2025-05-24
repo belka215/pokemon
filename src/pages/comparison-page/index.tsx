@@ -11,8 +11,6 @@ export const ComparisonPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const pokemonsToCompare = useSelector(getToComparisonPokemons);
   const detailedPokemon = useSelector(getDetailedPokemon);
-  const state = useSelector(state => state)
-  console.log(pokemonsToCompare, detailedPokemon, state)
 
   useEffect(() => {
     pokemonsToCompare.forEach(pokemon => {

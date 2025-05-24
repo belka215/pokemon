@@ -4,6 +4,7 @@ import { IDetailedPokemonComponent } from "../../typings/pokemon"
 import { AppDispatch } from "../../store"
 import { useDispatch } from "react-redux"
 import { removeFromComparison } from "../../store/comparison/slice"
+import { motion } from "motion/react";
 
 export const CompareCard: FC<IDetailedPokemonComponent> = ({ pokemon }) => {
   const dispatch: AppDispatch = useDispatch();
@@ -24,7 +25,10 @@ export const CompareCard: FC<IDetailedPokemonComponent> = ({ pokemon }) => {
         <p className="text text_uppercase">{pokemon.height}</p>
       </div>
       <div className="comparison__column__item">
-        <button className="comparison__column__btn text text_uppercase" onClick={handleRemove}>Remove</button>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="comparison__column__btn text text_uppercase" onClick={handleRemove}>Remove</motion.button>
       </div>
     </div>
   )
