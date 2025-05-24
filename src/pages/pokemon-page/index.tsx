@@ -10,6 +10,7 @@ import "./index.scss"
 import { getFavorites } from "../../store/favorites/selectors"
 import { useParams } from "react-router-dom"
 import { removeFromFavorites, setToFavorites } from "../../store/favorites/slice"
+import { addToComparison } from "../../store/comparison/slice"
 
 export const PokemonPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -39,6 +40,11 @@ export const PokemonPage = () => {
     } else {
       dispatch(setToFavorites(pokemon))
     }
+  }
+
+  const handleCompare = () => {
+    console.log(pokemon)
+    dispatch(addToComparison(pokemon))
   }
 
   return (
@@ -72,7 +78,7 @@ export const PokemonPage = () => {
                   <img src={like} alt="" />
                   Add To Favorites
                 </button>
-                <button className="pokemon-details__btns__item">
+                <button className="pokemon-details__btns__item" onClick={handleCompare}>
                   <img src={compare} alt="" />
                   Add To Comparison
                 </button>
