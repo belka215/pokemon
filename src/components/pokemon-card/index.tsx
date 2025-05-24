@@ -8,13 +8,17 @@ import { setPokemonURL } from "../../store/pokemons/slice";
 import "./index.scss"
 import { removeFromFavorites, setToFavorites } from "../../store/favorites/slice";
 import { getFavorites } from "../../store/favorites/selectors";
-import { addToComparison } from "../../store/comparison/slice";
+import { addToComparison, removeFromComparison } from "../../store/comparison/slice";
+import { getToComparisonPokemons } from "../../store/comparison/selectors";
 
 export const PokemonCard: FC<IPokemonComponent> = ({ pokemon }) => {
   const dispatch = useDispatch();
   const array = pokemon.url.split('/');
   const id = array[array.length - 2];
   const isLiked = Boolean(useSelector(getFavorites).find(item => {
+    return item.name === pokemon.name
+  }));
+  const isInComparison = Boolean(useSelector(getToComparisonPokemons).find(item => {
     return item.name === pokemon.name
   }));
 
@@ -31,7 +35,7 @@ export const PokemonCard: FC<IPokemonComponent> = ({ pokemon }) => {
   }
 
   const handleCompare = () => {
-    dispatch(addToComparison(pokemon))
+    isInComparison ? dispatch(removeFromComparison(pokemon)) : dispatch(addToComparison(pokemon))
   }
 
   return (
@@ -44,7 +48,7 @@ export const PokemonCard: FC<IPokemonComponent> = ({ pokemon }) => {
           <img src={like} alt="" className={`like${isLiked ? ' like_active' : ''}`} onClick={handleLike} />
         </div>
         <div className="card__icon">
-          <img src={compare} alt="" className="compare" onClick={handleCompare} />
+          <img src={compare} alt="" className={`compare${isInComparison ? ' compare_active' : ''}`} onClick={handleCompare} />
         </div>
       </div>
     </div>
