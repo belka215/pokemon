@@ -10,7 +10,8 @@ import "./index.scss"
 import { getFavorites } from "../../store/favorites/selectors"
 import { useParams } from "react-router-dom"
 import { removeFromFavorites, setToFavorites } from "../../store/favorites/slice"
-import { addToComparison } from "../../store/comparison/slice"
+import { addToComparison, removeFromComparison } from "../../store/comparison/slice"
+import { getToComparisonPokemons } from "../../store/comparison/selectors";
 
 export const PokemonPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -25,6 +26,9 @@ export const PokemonPage = () => {
   const isLiked = Boolean(useSelector(getFavorites).find(item => {
     return item.name === pokemon.name
   }))
+  const isInComparison = Boolean(useSelector(getToComparisonPokemons).find(item => {
+    return item.name === pokemon.name
+  }));
 
   useEffect(() => {
     dispatch(getDetailedPokemonThunk(url))
@@ -43,8 +47,7 @@ export const PokemonPage = () => {
   }
 
   const handleCompare = () => {
-    console.log(pokemon)
-    dispatch(addToComparison(pokemon))
+    isInComparison ? dispatch(removeFromComparison(pokemon)) : dispatch(addToComparison(pokemon))
   }
 
   return (
@@ -78,7 +81,7 @@ export const PokemonPage = () => {
                   <img src={like} alt="" />
                   Add To Favorites
                 </button>
-                <button className="pokemon-details__btns__item" onClick={handleCompare}>
+                <button className={`pokemon-details__btns__item${isInComparison ? ' btn-active' : ''}`} onClick={handleCompare}>
                   <img src={compare} alt="" />
                   Add To Comparison
                 </button>
